@@ -103,6 +103,8 @@
     "locationFound": "Showing businesses near you",
     "locationDenied": "Location access denied or unavailable",
     "locationDeniedHint": "Or type your city or address in the location field and search to find businesses near that area.",
+    "locationRequiresHttps": "Location requires HTTPS",
+    "locationRequiresHttpsHint": "Use this site via https:// for \"Near Me\", or enter a city or address in the location field above.",
     "clearAll": "Clear all"
   },
   "businessDetail": {

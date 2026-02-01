@@ -1,0 +1,98 @@
+# Find X – single domain (findx.kareemsoft.org)
+# Serves: / = frontend (dist), /api = Laravel, /dashboard = Next.js (proxy to Node)
+# Place in /www/server/panel/vhost/nginx/ or your Nginx sites-available.
+# Replace /www/wwwroot/findx.kareemsoft.org with your actual path if different.
+#
+# Setup:
+# 1. Frontend: build from project root → dist/ (VITE_API_URL=https://findx.kareemsoft.org/api, VITE_DASHBOARD_URL=https://findx.kareemsoft.org/dashboard)
+# 2. Backend: Laravel in backend/, APP_URL=https://findx.kareemsoft.org
+# 3. Dashboard: in dashboard/ set .env.production with NEXT_PUBLIC_API_URL=https://findx.kareemsoft.org/api and NEXT_PUBLIC_BASE_PATH=/dashboard, then npm run build; run with pm2 on port 3008
+# 4. PHP socket: if 502 on /api, change fastcgi_pass to your panel's PHP socket (e.g. BaoTa: unix:/www/server/php/82/var/run/php-fpm.sock)
+
+server
+{
+    listen 80;
+    server_name findx.kareemsoft.org;
+    index index.php index.html index.htm default.php default.htm default.html;
+
+    # Frontend (Vite build) – default root for static files
+    root /www/wwwroot/findx.kareemsoft.org/dist;
+
+    #SSL-START SSL related configuration, do NOT delete or modify the next line of commented-out 404 rules
+    #error_page 404/404.html;
+    #SSL-END
+
+    #ERROR-PAGE-START
+    error_page 404 /404.html;
+    error_page 502 /502.html;
+    #ERROR-PAGE-END
+
+    # ——— Laravel API at /api ———
+    # Pass /api/* to Laravel index.php, keep REQUEST_URI so routes work
+    location /api {
+        rewrite ^/api/?(.*)$ /index.php?$query_string break;
+        root /www/wwwroot/findx.kareemsoft.org/backend/public;
+        fastcgi_param REQUEST_URI $request_uri;
+        fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+        include fastcgi_params;
+        fastcgi_pass unix:/tmp/php-cgi-82.sock;
+        fastcgi_hide_header X-Powered-By;
+    }
+    # If your panel uses a different PHP socket, replace unix:/tmp/php-cgi-82.sock
+    # (e.g. unix:/www/server/php/82/var/run/php-fpm.sock for BaoTa)
+
+    # ——— Dashboard static files: serve .next from disk (avoids proxy 404 for chunks) ———
+    location ^~ /dashboard/_next {
+        alias /www/wwwroot/findx.kareemsoft.org/dashboard/.next;
+    }
+
+    # ——— Next.js dashboard (HTML pages) – proxy to Node ———
+    location ^~ /dashboard {
+        proxy_pass http://127.0.0.1:3008;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # ——— Frontend SPA (root) – try static files then index.html ———
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Forbidden files or directories
+    location ~ ^/(\.user.ini|\.htaccess|\.git|\.env|\.svn|\.project|LICENSE|README.md)
+    {
+        return 404;
+    }
+
+    location ~ \.well-known {
+        allow all;
+    }
+
+    if ( $uri ~ "^/\.well-known/.*\.(php|jsp|py|js|css|lua|ts|go|zip|tar\.gz|rar|7z|sql|bak)$" ) {
+        return 403;
+    }
+
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+    {
+        expires 30d;
+        error_log /dev/null;
+        access_log /dev/null;
+    }
+
+    # Static assets: only for frontend (root). Do NOT match /dashboard/* so dashboard proxy works.
+    location ~ ^(?!/dashboard).*\.(js|css)?$
+    {
+        expires 12h;
+        error_log /dev/null;
+        access_log /dev/null;
+    }
+
+    access_log  /www/wwwlogs/findx.kareemsoft.org.log;
+    error_log   /www/wwwlogs/findx.kareemsoft.org.error.log;
+}

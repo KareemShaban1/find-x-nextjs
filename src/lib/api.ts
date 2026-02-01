@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 /** Base URL of the business dashboard (Next.js app). Used to redirect after login/register. */
-export const DASHBOARD_URL = import.meta.env.VITE_DASHBOARD_URL || 'http://localhost:3000';
+export const DASHBOARD_URL = import.meta.env.VITE_DASHBOARD_URL || 'http://localhost:3008';
 
 /** Build URL to redirect business user to dashboard with auth token. */
 export function getDashboardAuthRedirect(token: string): string {

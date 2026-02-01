@@ -8,7 +8,7 @@ This guide walks you through deploying the Find X project (Laravel API, React fr
 |------------|-------------|------------|---------------------|
 | Backend API| Laravel     | 8000       | Nginx → PHP-FPM     |
 | Frontend   | Vite/React  | 5173       | Static files (Nginx)|
-| Dashboard  | Next.js     | 3000       | Node (PM2) or Nginx |
+| Dashboard  | Next.js     | 3008       | Node (PM2) or Nginx |
 
 ---
 
@@ -171,7 +171,7 @@ pm2 save
 pm2 startup   # Enable on boot
 ```
 
-Dashboard will listen on `localhost:3000`; Nginx will proxy to it.
+Dashboard will listen on `localhost:3008`; Nginx will proxy to it.
 
 ---
 
@@ -243,7 +243,7 @@ server {
     server_name dashboard.yourdomain.com;
 
     location / {
-        proxy_pass http://127.0.0.1:3000;
+        proxy_pass http://127.0.0.1:3008;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';

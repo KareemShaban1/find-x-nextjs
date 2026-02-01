@@ -59,10 +59,17 @@ const Search = () => {
       setLocation(t("search.usingYourLocation"));
       toast.success(t("search.locationFound"));
     } else {
-      toast.error(locationError || t("search.locationDenied"), {
-        description: t("search.locationDeniedHint"),
-        duration: 8000,
-      });
+      const isHttpsRequired =
+        typeof window !== "undefined" && !window.isSecureContext;
+      toast.error(
+        isHttpsRequired ? t("search.locationRequiresHttps") : (locationError || t("search.locationDenied")),
+        {
+          description: isHttpsRequired
+            ? t("search.locationRequiresHttpsHint")
+            : t("search.locationDeniedHint"),
+          duration: 10000,
+        }
+      );
     }
   }, [getLocation, setUserCoords, setLocation, t]);
 

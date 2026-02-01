@@ -103,6 +103,8 @@
     "locationFound": "عرض المشاريع القريبة منك",
     "locationDenied": "تم رفض الموقع أو غير متاح",
     "locationDeniedHint": "أو اكتب مدينتك أو عنوانك في حقل الموقع وابحث لعرض المشاريع القريبة من تلك المنطقة.",
+    "locationRequiresHttps": "الموقع يتطلب HTTPS",
+    "locationRequiresHttpsHint": "استخدم الموقع عبر https:// لـ \"قريب مني\"، أو اكتب مدينة أو عنواناً في حقل الموقع أعلاه.",
     "clearAll": "مسح الكل"
   },
   "businessDetail": {

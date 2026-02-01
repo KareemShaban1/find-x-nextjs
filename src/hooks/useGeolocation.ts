@@ -39,13 +39,6 @@ export function useGeolocation(): UseGeolocationResult {
       return Promise.resolve({ coords: null, error: msg });
     }
 
-    if (!window.isSecureContext) {
-      const msg =
-        "Location requires a secure connection. Please open this site using https:// or localhost.";
-      setError(msg);
-      return Promise.resolve({ coords: null, error: msg });
-    }
-
     setLoading(true);
     setError(null);
 
@@ -62,17 +55,23 @@ export function useGeolocation(): UseGeolocationResult {
         },
         (err) => {
           let message = "Unable to get your location";
-          switch (err.code) {
-            case err.PERMISSION_DENIED:
-              message =
-                "Location was denied. Enable it in your browser (lock icon in the address bar → Site settings) or open this site via https://.";
-              break;
-            case err.POSITION_UNAVAILABLE:
-              message = "Location unavailable. Check your device location settings.";
-              break;
-            case err.TIMEOUT:
-              message = "Location request timed out. Please try again.";
-              break;
+          // Non-secure context (HTTP): browser blocks geolocation; suggest HTTPS or typing a city
+          if (typeof window !== "undefined" && !window.isSecureContext) {
+            message =
+              "Location requires a secure connection (HTTPS). Use this site via https:// for \"Near Me\", or enter a city or address in the location field.";
+          } else {
+            switch (err.code) {
+              case err.PERMISSION_DENIED:
+                message =
+                  "Location was denied. Enable it in your browser (lock icon → Site settings) or use https:// for this site.";
+                break;
+              case err.POSITION_UNAVAILABLE:
+                message = "Location unavailable. Check your device location settings.";
+                break;
+              case err.TIMEOUT:
+                message = "Location request timed out. Please try again.";
+                break;
+            }
           }
           setError(message);
           setLoading(false);
