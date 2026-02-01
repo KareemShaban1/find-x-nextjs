@@ -1,0 +1,162 @@
+{
+  "common": {
+    "search": "بحث",
+    "back": "رجوع",
+    "loading": "جاري التحميل...",
+    "reviews": "تقييمات",
+    "featured": "مميز",
+    "openNow": "مفتوح الآن",
+    "closed": "مغلق",
+    "callNow": "اتصل الآن",
+    "website": "الموقع",
+    "about": "عن",
+    "helpful": "مفيد",
+    "stars": "نجوم",
+    "viewDetails": "عرض التفاصيل"
+  },
+  "header": {
+    "explore": "استكشف",
+    "categories": "الفئات",
+    "forBusiness": "للشركات",
+    "about": "عن الموقع",
+    "favorites": "المفضلة",
+    "myFavorites": "مفضلاتي",
+    "dashboard": "لوحة التحكم",
+    "signIn": "تسجيل الدخول",
+    "listYourBusiness": "أضف مشروعك"
+  },
+  "footer": {
+    "tagline": "منصتك الموثوقة لاكتشاف الأعمال المحلية والخدمات. تواصل مع مقدمي خدمات موثقين في منطقتك.",
+    "quickLinks": "روابط سريعة",
+    "browseCategories": "تصفح الفئات",
+    "featuredListings": "قوائم مميزة",
+    "nearMe": "قريب مني",
+    "newBusinesses": "مشاريع جديدة",
+    "forBusiness": "للشركات",
+    "advertising": "إعلانات",
+    "businessDashboard": "لوحة تحكم الأعمال",
+    "pricingPlans": "خطط الأسعار",
+    "contact": "اتصل بنا",
+    "contactUs": "تواصل معنا",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة",
+    "cookies": "ملفات تعريف الارتباط",
+    "copyright": "© 2024 FindX. جميع الحقوق محفوظة."
+  },
+  "hero": {
+    "badge": "اكتشف الأعمال المحلية قربك",
+    "title": "اعثر على أفضل الخدمات المحلية",
+    "titleHighlight": "حولك",
+    "subtitle": "ابحث بين آلاف الأعمال، اقرأ التقييمات، وتواصل مع مقدمي الخدمات المحليين في منطقتك.",
+    "searchPlaceholder": "ماذا تبحث؟",
+    "locationPlaceholder": "موقعك",
+    "searchButton": "بحث",
+    "popular": "الأكثر بحثاً:",
+    "businesses": "مشاريع",
+    "reviews": "تقييمات",
+    "cities": "مدن"
+  },
+  "featured": {
+    "title": "مشاريع",
+    "titleHighlight": "مميزة",
+    "subtitle": "اكتشف أفضل الأعمال المحلية التي يوصي بها مجتمعك",
+    "viewAllListings": "عرض كل القوائم"
+  },
+  "home": {
+    "offers": "العروض الحالية",
+    "noOffers": "لا توجد عروض حالية. ستظهر العروض المعتمدة ضمن تواريخ البدء والانتهاء هنا."
+  },
+  "howItWorks": {
+    "title": "كيف",
+    "titleBrand": "FindX",
+    "titleSuffix": "يعمل",
+    "subtitle": "لم يكن العثور على الخدمة المحلية المناسبة أسهل من أي وقت مضى. إليك كيف يعمل.",
+    "search": "ابحث",
+    "searchDesc": "أدخل ما تبحث عنه وموقعك للعثور على الخدمات القريبة",
+    "discover": "اكتشف",
+    "discoverDesc": "تصفح القوائم، شاهد المواقع على الخريطة، وفلتر حسب تفضيلاتك",
+    "compare": "قارن",
+    "compareDesc": "اقرأ التقييمات، تحقق من التصنيفات، وقارن الأسعار لاتخاذ قرارات مدروسة",
+    "connect": "تواصل",
+    "connectDesc": "تواصل مع الأعمال مباشرة، احجز مواعيد، واحصل على الخدمة التي تحتاجها"
+  },
+  "cta": {
+    "title": "انمِ مشروعك مع FindX",
+    "subtitle": "انضم إلى آلاف الأعمال التي تصل لعملاء جدد عبر منصتنا. كن مرئياً لمن يبحثون عن خدماتك.",
+    "businessesListed": "مشاريع مسجلة",
+    "monthlyUsers": "مستخدم شهرياً",
+    "avgGrowth": "متوسط النمو",
+    "listYourBusinessFree": "أضف مشروعك مجاناً",
+    "learnMore": "اعرف المزيد"
+  },
+  "category": {
+    "title": "تصفح حسب",
+    "titleHighlight": "الفئة",
+    "subtitle": "استكشف مجموعتنا الواسعة من الفئات للعثور على ما تحتاجه"
+  },
+  "search": {
+    "nearMe": "قريب مني",
+    "useMyLocation": "استخدم موقعي",
+    "usingYourLocation": "استخدام موقعك",
+    "locationPlaceholder": "المدينة أو العنوان",
+    "gettingLocation": "جاري الحصول على الموقع...",
+    "locationFound": "عرض المشاريع القريبة منك",
+    "locationDenied": "تم رفض الموقع أو غير متاح",
+    "locationDeniedHint": "أو اكتب مدينتك أو عنوانك في حقل الموقع وابحث لعرض المشاريع القريبة من تلك المنطقة.",
+    "clearAll": "مسح الكل"
+  },
+  "businessDetail": {
+    "loading": "جاري تحميل تفاصيل المشروع...",
+    "notFound": "المشروع غير موجود",
+    "goBackHome": "العودة للرئيسية",
+    "addToFavorites": "أضف إلى المفضلة",
+    "removeFromFavorites": "إزالة من المفضلة",
+    "writeReview": "اكتب تقييماً",
+    "rating": "التقييم",
+    "yourReview": "تقييمك",
+    "reviewPlaceholder": "شارك تجربتك...",
+    "submitReview": "إرسال التقييم",
+    "submitting": "جاري الإرسال…",
+    "reviews": "التقييمات",
+    "checkOut": "اطلع على {{name}} على Find X",
+    "menu": "القائمة",
+    "products": "المنتجات",
+    "services": "الخدمات"
+  },
+  "reviews": {
+    "reviewsCount": "{{count}} تقييم",
+    "recentReviews": "أحدث التقييمات",
+    "noReviews": "لا توجد تقييمات بعد. كن أول من يقيّم!",
+    "reviewImage": "صورة التقييم {{num}}"
+  },
+  "contact": {
+    "title": "تواصل معنا",
+    "subtitle": "لديك سؤال أو ملاحظات؟ نحب أن نسمع منك.",
+    "sendMessage": "أرسل لنا رسالة",
+    "name": "الاسم",
+    "namePlaceholder": "اسمك",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "you@example.com",
+    "subject": "الموضوع",
+    "subjectPlaceholder": "ما الموضوع؟",
+    "message": "الرسالة",
+    "messagePlaceholder": "رسالتك...",
+    "send": "إرسال الرسالة",
+    "sending": "جاري الإرسال...",
+    "getInTouch": "تواصل معنا",
+    "emailLabel": "البريد الإلكتروني",
+    "phoneLabel": "الهاتف",
+    "addressLabel": "العنوان",
+    "address": "FindX، 123 شارع الأعمال، مدينتك",
+    "successMessage": "تم إرسال الرسالة! سنرد عليك قريباً.",
+    "errorMessage": "حدث خطأ. يرجى المحاولة مرة أخرى."
+  },
+  "toast": {
+    "reviewSubmitted": "تم إرسال التقييم",
+    "reviewFailed": "فشل إرسال التقييم",
+    "addedToFavorites": "تمت الإضافة إلى المفضلة",
+    "removedFromFavorites": "تمت الإزالة من المفضلة",
+    "signInToFavorites": "سجّل الدخول لإضافة مشاريع إلى المفضلة",
+    "couldNotUpdateFavorites": "تعذر تحديث المفضلة"
+  }
+}

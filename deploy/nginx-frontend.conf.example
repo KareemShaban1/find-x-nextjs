@@ -1,0 +1,19 @@
+# React frontend (Vite build) – save as /etc/nginx/sites-available/findx-frontend
+# Enable: sudo ln -s /etc/nginx/sites-available/findx-frontend /etc/nginx/sites-enabled/
+# Replace yourdomain.com with your site domain
+
+server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+    root /var/www/findx/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}

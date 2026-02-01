@@ -1,0 +1,162 @@
+{
+  "common": {
+    "search": "Search",
+    "back": "Back",
+    "loading": "Loading...",
+    "reviews": "reviews",
+    "featured": "Featured",
+    "openNow": "Open Now",
+    "closed": "Closed",
+    "callNow": "Call Now",
+    "website": "Website",
+    "about": "About",
+    "helpful": "Helpful",
+    "stars": "stars",
+    "viewDetails": "View details"
+  },
+  "header": {
+    "explore": "Explore",
+    "categories": "Categories",
+    "forBusiness": "For Business",
+    "about": "About",
+    "favorites": "Favorites",
+    "myFavorites": "My Favorites",
+    "dashboard": "Dashboard",
+    "signIn": "Sign In",
+    "listYourBusiness": "List Your Business"
+  },
+  "footer": {
+    "tagline": "Your trusted platform for discovering local businesses and services. Connect with verified providers in your area.",
+    "quickLinks": "Quick Links",
+    "browseCategories": "Browse Categories",
+    "featuredListings": "Featured Listings",
+    "nearMe": "Near Me",
+    "newBusinesses": "New Businesses",
+    "forBusiness": "For Business",
+    "advertising": "Advertising",
+    "businessDashboard": "Business Dashboard",
+    "pricingPlans": "Pricing Plans",
+    "contact": "Contact",
+    "contactUs": "Contact Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookies": "Cookies",
+    "copyright": "© 2024 FindX. All rights reserved."
+  },
+  "hero": {
+    "badge": "Discover local businesses near you",
+    "title": "Find the Best Local Services",
+    "titleHighlight": "Around You",
+    "subtitle": "Search thousands of businesses, read reviews, and connect with local service providers in your area.",
+    "searchPlaceholder": "What are you looking for?",
+    "locationPlaceholder": "Your location",
+    "searchButton": "Search",
+    "popular": "Popular:",
+    "businesses": "Businesses",
+    "reviews": "Reviews",
+    "cities": "Cities"
+  },
+  "featured": {
+    "title": "Featured",
+    "titleHighlight": "Businesses",
+    "subtitle": "Discover top-rated local businesses recommended by your community",
+    "viewAllListings": "View All Listings"
+  },
+  "home": {
+    "offers": "Current Offers",
+    "noOffers": "No current offers. Approved offers within their start and end dates will appear here."
+  },
+  "howItWorks": {
+    "title": "How",
+    "titleBrand": "FindX",
+    "titleSuffix": "Works",
+    "subtitle": "Finding the right local service has never been easier. Here's how it works.",
+    "search": "Search",
+    "searchDesc": "Enter what you're looking for and your location to find nearby services",
+    "discover": "Discover",
+    "discoverDesc": "Browse through listings, view locations on the map, and filter by your preferences",
+    "compare": "Compare",
+    "compareDesc": "Read reviews, check ratings, and compare prices to make informed decisions",
+    "connect": "Connect",
+    "connectDesc": "Contact businesses directly, book appointments, and get the service you need"
+  },
+  "cta": {
+    "title": "Grow Your Business with FindX",
+    "subtitle": "Join thousands of businesses already reaching new customers through our platform. Get discovered by people actively searching for your services.",
+    "businessesListed": "Businesses Listed",
+    "monthlyUsers": "Monthly Users",
+    "avgGrowth": "Avg. Growth",
+    "listYourBusinessFree": "List Your Business Free",
+    "learnMore": "Learn More"
+  },
+  "category": {
+    "title": "Browse by",
+    "titleHighlight": "Category",
+    "subtitle": "Explore our wide range of categories to find exactly what you need"
+  },
+  "search": {
+    "nearMe": "Near me",
+    "useMyLocation": "Use my location",
+    "usingYourLocation": "Using your location",
+    "locationPlaceholder": "City or address",
+    "gettingLocation": "Getting location...",
+    "locationFound": "Showing businesses near you",
+    "locationDenied": "Location access denied or unavailable",
+    "locationDeniedHint": "Or type your city or address in the location field and search to find businesses near that area.",
+    "clearAll": "Clear all"
+  },
+  "businessDetail": {
+    "loading": "Loading business details...",
+    "notFound": "Business not found",
+    "goBackHome": "Go back to home",
+    "addToFavorites": "Add to favorites",
+    "removeFromFavorites": "Remove from favorites",
+    "writeReview": "Write a review",
+    "rating": "Rating",
+    "yourReview": "Your review",
+    "reviewPlaceholder": "Share your experience...",
+    "submitReview": "Submit review",
+    "submitting": "Submitting…",
+    "reviews": "Reviews",
+    "checkOut": "Check out {{name}} on Find X",
+    "menu": "Menu",
+    "products": "Products",
+    "services": "Services"
+  },
+  "reviews": {
+    "reviewsCount": "{{count}} reviews",
+    "recentReviews": "Recent Reviews",
+    "noReviews": "No reviews yet. Be the first to review!",
+    "reviewImage": "Review image {{num}}"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question or feedback? We'd love to hear from you.",
+    "sendMessage": "Send us a message",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What is this about?",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "send": "Send message",
+    "sending": "Sending...",
+    "getInTouch": "Get in touch",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "addressLabel": "Address",
+    "address": "FindX HQ, 123 Business Ave, Your City",
+    "successMessage": "Message sent! We'll get back to you soon.",
+    "errorMessage": "Something went wrong. Please try again."
+  },
+  "toast": {
+    "reviewSubmitted": "Review submitted",
+    "reviewFailed": "Failed to submit review",
+    "addedToFavorites": "Added to favorites",
+    "removedFromFavorites": "Removed from favorites",
+    "signInToFavorites": "Sign in to add businesses to your favorites",
+    "couldNotUpdateFavorites": "Could not update favorites"
+  }
+}
