@@ -28,12 +28,9 @@ export default function LoginPage() {
         console.log('Setting auth state...');
         setAuth(response.user, response.token);
         
-        // Wait a bit for state to update, then redirect
-        setTimeout(() => {
-          const redirectPath = response.user.role === 'super_admin' ? '/admin' : '/organization';
-          console.log('Redirecting to:', redirectPath);
-          window.location.href = redirectPath;
-        }, 100);
+        // Use router so basePath is applied (e.g. /dashboard/admin not /admin on main site)
+        const redirectPath = response.user.role === 'super_admin' ? '/admin' : '/organization';
+        router.push(redirectPath);
       } else {
         setError(t('login.errorInvalidResponse'));
       }

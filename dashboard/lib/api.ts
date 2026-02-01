@@ -23,7 +23,8 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401 errors
+// Handle 401 errors (redirect to dashboard login, respecting basePath)
+const basePath = typeof process !== 'undefined' ? (process.env.NEXT_PUBLIC_BASE_PATH || '') : '';
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -31,7 +32,7 @@ api.interceptors.response.use(
       if (typeof window !== 'undefined') {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.location.href = '/login';
+        window.location.href = `${basePath}/login`;
       }
     }
     return Promise.reject(error);
