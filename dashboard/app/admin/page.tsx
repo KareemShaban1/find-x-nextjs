@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import DashboardLayout from '@/components/DashboardLayout';
 import api from '@/lib/api';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Building2, FolderTree, Users, Star, Mail, TrendingUp } from 'lucide-react';
 
 interface DashboardStats {
