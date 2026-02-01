@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Input value and placeholder color - black */
+input,
+textarea,
+select {
+  color: #000000 !important;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #000000 !important;
+  opacity: 0.5;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder,
+select:focus::placeholder {
+  color: #000000 !important;
+  opacity: 0.4;
+}
+
+/* Select option text color */
+select option {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+/* Ensure select dropdown text is black */
+select:not([multiple]) {
+  color: #000000 !important;
+}
+
+/* Multiple select text color */
+select[multiple] {
+  color: #000000 !important;
+}
+
+select[multiple] option {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
