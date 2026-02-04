@@ -1,5 +1,16 @@
 # Fix 404 for dashboard and _next/static (findx.kareemsoft.org)
 
+---
+
+## Mixed content (blocked:mixed-content) when using HTTPS
+
+If the site is served over **HTTPS** but the API is called with **HTTP**, the browser blocks the request (mixed content). The app now forces the API URL to **HTTPS** when the page is loaded over HTTPS, so existing builds work. For new builds, set:
+
+- **Frontend:** `VITE_API_URL=https://findx.kareemsoft.org/api` and `VITE_DASHBOARD_URL=https://findx.kareemsoft.org/dashboard`
+- **Dashboard:** `NEXT_PUBLIC_API_URL=https://findx.kareemsoft.org/api`
+
+---
+
 You see:
 - `GET http://findx.kareemsoft.org/dashboard/login` → 404
 - `GET http://findx.kareemsoft.org/_next/static/chunks/...` → 404

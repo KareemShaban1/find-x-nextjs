@@ -1,8 +1,16 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
-
-console.log('API URL:', API_URL);
+// When served over HTTPS, use HTTPS for API to avoid mixed-content blocking.
+function getApiUrl(): string {
+  const env = process.env.NEXT_PUBLIC_API_URL || '';
+  const fallback = typeof window !== 'undefined' ? `${window.location.origin}/api` : 'http://localhost:8000/api';
+  let url = env || fallback;
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:' && url.startsWith('http://')) {
+    url = url.replace('http://', 'https://');
+  }
+  return url;
+}
+const API_URL = getApiUrl();
 
 export const api = axios.create({
   baseURL: API_URL,

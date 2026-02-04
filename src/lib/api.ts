@@ -1,13 +1,43 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+// Use env or same-origin /api. When page is HTTPS, force API to HTTPS to avoid mixed-content blocking.
+function getApiUrl(): string {
+  const env = import.meta.env.VITE_API_URL || '';
+  const fallback =
+    typeof window !== 'undefined' ? `${window.location.origin}/api` : 'http://localhost:8000/api';
+  let url = env || fallback;
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:' && url.startsWith('http://')) {
+    url = url.replace('http://', 'https://');
+  }
+  return url;
+}
+const API_URL = getApiUrl();
 
 /** Base URL of the business dashboard (Next.js app). Used to redirect after login/register. */
-export const DASHBOARD_URL = import.meta.env.VITE_DASHBOARD_URL || 'http://localhost:3008';
+function getDashboardUrl(): string {
+  const env = import.meta.env.VITE_DASHBOARD_URL || '';
+  const fallback =
+    typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3008';
+  let url = env || fallback;
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:' && url.startsWith('http://')) {
+    url = url.replace('http://', 'https://');
+  }
+  return url;
+}
+export const DASHBOARD_URL = getDashboardUrl();
 
 /** Build URL to redirect business user to dashboard with auth token. */
 export function getDashboardAuthRedirect(token: string): string {
-  return `${DASHBOARD_URL}/auth/callback?token=${encodeURIComponent(token)}`;
+  let base = DASHBOARD_URL.replace(/\/$/, "");
+  // When dashboard is served under /dashboard (same domain), ensure base includes it
+  if (
+    typeof window !== "undefined" &&
+    window.location.hostname !== "localhost" &&
+    !base.endsWith("/dashboard")
+  ) {
+    base = `${base}/dashboard`;
+  }
+  return `${base}/auth/callback?token=${encodeURIComponent(token)}`;
 }
 
 const api = axios.create({
