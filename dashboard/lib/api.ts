@@ -1,14 +1,13 @@
 import axios from 'axios';
 
-// When served over HTTPS, use HTTPS for API to avoid mixed-content blocking.
+// In browser always use same origin as the page (avoids mixed content when page is HTTPS).
+// On server use env or localhost for SSR.
 function getApiUrl(): string {
-  const env = process.env.NEXT_PUBLIC_API_URL || '';
-  const fallback = typeof window !== 'undefined' ? `${window.location.origin}/api` : 'http://localhost:8000/api';
-  let url = env || fallback;
-  if (typeof window !== 'undefined' && window.location.protocol === 'https:' && url.startsWith('http://')) {
-    url = url.replace('http://', 'https://');
+  if (typeof window !== 'undefined') {
+    return `${window.location.origin}/api`;
   }
-  return url;
+  const env = process.env.NEXT_PUBLIC_API_URL || '';
+  return env || 'http://localhost:8000/api';
 }
 const API_URL = getApiUrl();
 
