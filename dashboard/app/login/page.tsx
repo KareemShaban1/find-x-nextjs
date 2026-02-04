@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
 import { authApi } from '@/lib/auth';
 import { useLanguage } from '@/contexts/LanguageContext';
+import api from '@/lib/api';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -14,6 +15,11 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // Force API to use relative /api on this page so HTTPS never requests HTTP (mixed content fix)
+  useEffect(() => {
+    api.defaults.baseURL = '/api';
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// In browser use relative /api so the request always uses the page's origin (HTTPS when site is HTTPS).
-// On server use full URL from env for SSR.
+// Server: need full URL for SSR. Browser: use relative path so request uses page origin (fixes mixed content).
 function getApiUrl(): string {
   if (typeof window !== 'undefined') {
     return '/api';
@@ -9,6 +8,7 @@ function getApiUrl(): string {
   const env = process.env.NEXT_PUBLIC_API_URL || '';
   return env || 'http://localhost:8000/api';
 }
+
 const API_URL = getApiUrl();
 
 export const api = axios.create({
@@ -19,15 +19,16 @@ export const api = axios.create({
   },
 });
 
-// Add token to requests; ensure baseURL uses HTTPS when page is HTTPS (fix mixed content)
+// Request interceptor: in browser always use relative /api so HTTPS page never requests HTTP
 api.interceptors.request.use((config) => {
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    // Force API baseURL to match page protocol so HTTPS pages never request HTTP
-    config.baseURL = getApiUrl();
+    // Force relative base: never use absolute http(s) URL so mixed content cannot occur
+    const base = config.baseURL ?? '';
+    config.baseURL = typeof base === 'string' && base.startsWith('http') ? '/api' : '/api';
   }
   return config;
 });
