@@ -133,6 +133,15 @@ export default function LoginPage() {
               {loading ? t('login.signingIn') : t('login.signIn')}
             </button>
           </div>
+          <p className="mt-4 text-center text-sm text-gray-600">
+            {t('login.forCustomer')}{' '}
+            <a
+              href={typeof window !== 'undefined' ? `${window.location.origin}/login` : '/login'}
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
+              {t('login.signInOnMainSite')}
+            </a>
+          </p>
         </form>
       </div>
     </div>

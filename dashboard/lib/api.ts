@@ -20,13 +20,15 @@ export const api = axios.create({
   },
 });
 
-// Add token to requests
+// Add token to requests; ensure baseURL uses HTTPS when page is HTTPS (fix mixed content)
 api.interceptors.request.use((config) => {
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    // Force API baseURL to match page protocol so HTTPS pages never request HTTP
+    config.baseURL = getApiUrl();
   }
   return config;
 });

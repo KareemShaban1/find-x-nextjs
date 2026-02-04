@@ -49,7 +49,9 @@
     "signingIn": "جاري تسجيل الدخول...",
     "errorDefault": "فشل تسجيل الدخول. تحقق من بياناتك.",
     "errorNoConnection": "تعذر الاتصال بالخادم. تأكد من تشغيل الواجهة الخلفية.",
-    "errorInvalidResponse": "استجابة غير صالحة من الخادم"
+    "errorInvalidResponse": "استجابة غير صالحة من الخادم",
+    "forCustomer": "هل أنت عميل؟",
+    "signInOnMainSite": "تسجيل الدخول من الموقع الرئيسي"
   },
   "organization": {
     "dashboard": "لوحة المنظمة",

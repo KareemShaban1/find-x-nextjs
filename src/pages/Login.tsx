@@ -80,7 +80,7 @@ const Login = () => {
               </div>
               Find<span className="text-primary">X</span>
             </Link>
-            <p className="text-muted-foreground text-sm">Sign in to your account</p>
+            <p className="text-muted-foreground text-sm">Sign in to your account (customers)</p>
           </div>
 
           <Card className="border-2 shadow-lg">
@@ -122,6 +122,19 @@ const Login = () => {
                   <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
                     {form.formState.isSubmitting ? "Signing in…" : "Sign in"}
                   </Button>
+                  <p className="text-sm text-muted-foreground text-center">
+                    Business owner or admin?{" "}
+                    <a
+                      href={
+                        import.meta.env.VITE_DASHBOARD_URL
+                          ? `${import.meta.env.VITE_DASHBOARD_URL.replace(/\/$/, "")}/login`
+                          : `${window.location.origin}/dashboard/login`
+                      }
+                      className="font-medium text-primary hover:underline"
+                    >
+                      Sign in to the dashboard
+                    </a>
+                  </p>
                   <p className="text-sm text-muted-foreground text-center">
                     Don&apos;t have an account?{" "}
                     <Link to="/register/customer" className="font-medium text-primary hover:underline">
