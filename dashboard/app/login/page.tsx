@@ -21,6 +21,22 @@ export default function LoginPage() {
     api.defaults.baseURL = '/api';
   }, []);
 
+  // If URL has email/password (e.g. after accidental GET submit), sync to state and remove from URL so next submit works and credentials aren't visible
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const emailParam = params.get('email');
+    const passwordParam = params.get('password');
+    if (emailParam || passwordParam) {
+      if (emailParam) setEmail(decodeURIComponent(emailParam));
+      if (passwordParam) setPassword(decodeURIComponent(passwordParam));
+      const url = new URL(window.location.href);
+      url.searchParams.delete('email');
+      url.searchParams.delete('password');
+      window.history.replaceState({}, '', url.pathname + (url.search || ''));
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -91,7 +107,7 @@ export default function LoginPage() {
             {t('login.subtitle')}
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit} method="post" action="#">
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
               {error}

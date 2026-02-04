@@ -41,12 +41,9 @@ server
     # If your panel uses a different PHP socket, replace unix:/tmp/php-cgi-82.sock
     # (e.g. unix:/www/server/php/82/var/run/php-fpm.sock for BaoTa)
 
-    # ——— Dashboard static files: serve .next from disk (avoids proxy 404 for chunks) ———
-    location ^~ /dashboard/_next {
-        alias /www/wwwroot/findx.kareemsoft.org/dashboard/.next;
-    }
-
-    # ——— Next.js dashboard (HTML pages) – proxy to Node ———
+    # ——— Next.js dashboard: proxy all /dashboard (including /dashboard/_next/static) to Node ———
+    # Do NOT add a separate alias for /dashboard/_next; the app must serve _next from its .next folder.
+    # Build on server or deploy .next so the process running on 3008 has .next in its cwd.
     location ^~ /dashboard {
         proxy_pass http://127.0.0.1:3008;
         proxy_http_version 1.1;
