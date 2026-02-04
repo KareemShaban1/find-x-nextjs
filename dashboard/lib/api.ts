@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-// In browser always use same origin as the page (avoids mixed content when page is HTTPS).
-// On server use env or localhost for SSR.
+// In browser use relative /api so the request always uses the page's origin (HTTPS when site is HTTPS).
+// On server use full URL from env for SSR.
 function getApiUrl(): string {
   if (typeof window !== 'undefined') {
-    return `${window.location.origin}/api`;
+    return '/api';
   }
   const env = process.env.NEXT_PUBLIC_API_URL || '';
   return env || 'http://localhost:8000/api';
